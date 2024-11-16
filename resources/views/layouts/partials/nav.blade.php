@@ -3,6 +3,13 @@
         <ul class="nav nav-pills nav-side flex-column">
             <li class="nav-item"><a class="nav-link {{ (strpos(Route::currentRouteName(), 'laravel-crm.dashboard') === 0) ? 'active' : '' }}" aria-current="dashboard" href="{{ url(route('laravel-crm.dashboard')) }}"><i class="fa fa-dashboard"></i> {{ ucfirst(__('laravel-crm::lang.dashboard')) }}</a></li>
             <li class="dropdown-divider"></li>
+            @hasparticipiantsenabled
+                @can('view crm participiants')
+                <li class="nav-item"><a class="nav-link {{ (strpos(Route::currentRouteName(), 'laravel-crm.participiants') === 0) ? 'active' : '' }}" href="{{ url(route('laravel-crm.participiants.index')) }}"><i class="fa fa-crosshairs"></i> {{ ucfirst(__('laravel-crm::lang.participiants')) }}</a></li>
+                @endcan
+            @endhasparticipiantsenabled
+            <li class="nav-item"><a class="nav-link {{ (strpos(Route::currentRouteName(), 'laravel-crm.participiants') === 0) ? 'active' : '' }}" href="{{ url(route('laravel-crm.participiants.index')) }}"><i class="fa fa-crosshairs"></i> {{ ucfirst(__('laravel-crm::lang.participiants')) }}</a></li>
+            <li class="dropdown-divider"></li>
             @hasleadsenabled
                 @can('view crm leads')
                 <li class="nav-item"><a class="nav-link {{ (strpos(Route::currentRouteName(), 'laravel-crm.leads') === 0) ? 'active' : '' }}" href="{{ url(route('laravel-crm.leads.index')) }}"><i class="fa fa-crosshairs"></i> {{ ucfirst(__('laravel-crm::lang.leads')) }}</a></li>
@@ -28,7 +35,7 @@
                 'laravel-crm.lunches',
                 'laravel-crm.files',
             ]) ? 'active' : '' }}" href="{{ url(route('laravel-crm.activities.index')) }}"><i class="fa fa-tasks"></i> {{ ucfirst(__('laravel-crm::lang.activity')) }}</a></li>
-            @endcan   
+            @endcan
             {{--@can('view crm tasks')
                 <li class="nav-item"><a class="nav-link {{ (strpos(Route::currentRouteName(), 'laravel-crm.tasks') === 0) ? 'active' : '' }}" href="{{ url(route('laravel-crm.tasks.index')) }}">{{ ucfirst(__('laravel-crm::lang.tasks')) }}</a></li>
             @endcan
@@ -56,6 +63,9 @@
                     <li class="nav-item"><a class="nav-link {{ (strpos(Route::currentRouteName(), 'laravel-crm.deliveries') === 0) ? 'active' : '' }}" href="{{ url(route('laravel-crm.deliveries.index')) }}"><i class="fa fa-shipping-fast"></i> {{ ucfirst(__('laravel-crm::lang.deliveries')) }}</a></li>
                 @endcan
             @endhasdeliveriesenabled
+
+            <li class="nav-item"><a class="nav-link {{ (strpos(Route::currentRouteName(), 'laravel-crm.product-return') === 0) ? 'active' : '' }}" href="{{ url(route('laravel-crm.product-return.index')) }}"><i class="fa fa-shipping-fast"></i> {{ ucfirst(__('laravel-crm::lang.product-return')) }}</a></li>
+
             @haspurchaseordersenabled
             @can('view crm purchase orders')
                 <li class="nav-item"><a class="nav-link {{ (strpos(Route::currentRouteName(), 'laravel-crm.purchase-order') === 0) ? 'active' : '' }}" href="{{ url(route('laravel-crm.purchase-orders.index')) }}"><i class="fa fa-file-invoice-dollar"></i> {{ ucwords(__('laravel-crm::lang.purchase_orders')) }}</a></li>
@@ -89,6 +99,9 @@
             @can('view crm products')
             <li class="nav-item"><a class="nav-link {{ (strpos(Route::currentRouteName(), 'laravel-crm.products') === 0) ? 'active' : '' }}" href="{{ url(route('laravel-crm.products.index')) }}"><i class="fa fa-tag"></i> {{ ucfirst(__('laravel-crm::lang.products')) }}</a></li>
             @endcan
+            <li class="nav-item"><a class="nav-link {{ (strpos(Route::currentRouteName(), 'laravel-crm.recipes') === 0) ? 'active' : '' }}" href="{{ url(route('laravel-crm.recipes.index')) }}"><i class="fa fa-tag"></i> {{ ucfirst(__('laravel-crm::lang.recipes')) }}</a></li>
+            <li class="nav-item"><a class="nav-link {{ (strpos(Route::currentRouteName(), 'laravel-crm.recipe-categories') === 0) ? 'active' : '' }}" href="{{ url(route('laravel-crm.recipe-categories.index')) }}"><i class="fa fa-tag"></i> {{ ucfirst(__('laravel-crm::lang.recipe-categories')) }}</a></li>
+
             {{--<li class="nav-item"><a class="nav-link" href="#">{{ ucfirst(__('laravel-crm::lang.subscriptions')) }}</a></li>
             <li class="nav-item"><a class="nav-link" href="#">{{ ucfirst(__('laravel-crm::lang.invoices')) }}</a></li>
             <li class="nav-item"><a class="nav-link" href="#">{{ ucfirst(__('laravel-crm::lang.payments')) }}</a></li>

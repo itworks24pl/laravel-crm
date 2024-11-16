@@ -1000,45 +1000,7 @@ Route::group(['prefix' => 'crm-teams', 'middleware' => 'auth.laravel-crm'], func
         ->middleware(['can:delete,team']);
 });
 
-/* Products */
-
-Route::group(['prefix' => 'products', 'middleware' => 'auth.laravel-crm'], function () {
-    Route::get('', 'VentureDrake\LaravelCrm\Http\Controllers\ProductController@index')
-        ->name('laravel-crm.products.index')
-        ->middleware(['can:viewAny,VentureDrake\LaravelCrm\Models\Product']);
-
-    Route::any('search', 'VentureDrake\LaravelCrm\Http\Controllers\ProductController@search')
-        ->name('laravel-crm.products.search')
-        ->middleware(['can:viewAny,VentureDrake\LaravelCrm\Models\Product']);
-
-    Route::get('create', 'VentureDrake\LaravelCrm\Http\Controllers\ProductController@create')
-        ->name('laravel-crm.products.create')
-        ->middleware(['can:create,VentureDrake\LaravelCrm\Models\Product']);
-
-    Route::post('', 'VentureDrake\LaravelCrm\Http\Controllers\ProductController@store')
-        ->name('laravel-crm.products.store')
-        ->middleware(['can:create,VentureDrake\LaravelCrm\Models\Product']);
-
-    Route::get('{product}', 'VentureDrake\LaravelCrm\Http\Controllers\ProductController@show')
-        ->name('laravel-crm.products.show')
-        ->middleware(['can:view,product']);
-
-    Route::get('{product}/edit', 'VentureDrake\LaravelCrm\Http\Controllers\ProductController@edit')
-        ->name('laravel-crm.products.edit')
-        ->middleware(['can:update,product']);
-
-    Route::put('{product}', 'VentureDrake\LaravelCrm\Http\Controllers\ProductController@update')
-        ->name('laravel-crm.products.update')
-        ->middleware(['can:update,product']);
-
-    Route::delete('{product}', 'VentureDrake\LaravelCrm\Http\Controllers\ProductController@destroy')
-        ->name('laravel-crm.products.destroy')
-        ->middleware(['can:delete,product']);
-
-    Route::get('{product}/autocomplete', 'VentureDrake\LaravelCrm\Http\Controllers\ProductController@autocomplete')
-        ->name('laravel-crm.products.autocomplete')
-        ->middleware(['can:viewAny,VentureDrake\LaravelCrm\Models\Product']);
-});
+require_once('Routes/products.php');
 
 /* Product Categories */
 
@@ -1136,17 +1098,7 @@ Route::group(['prefix' => 'tax-rates', 'middleware' => 'auth.laravel-crm'], func
         ->middleware(['can:delete,taxRate']);
 });
 
-/* Settings */
-
-Route::group(['prefix' => 'settings', 'middleware' => 'auth.laravel-crm'], function () {
-    Route::get('', 'VentureDrake\LaravelCrm\Http\Controllers\SettingController@edit')
-        ->name('laravel-crm.settings.edit')
-        ->middleware(['can:update,VentureDrake\LaravelCrm\Models\Setting']);
-
-    Route::post('', 'VentureDrake\LaravelCrm\Http\Controllers\SettingController@update')
-        ->name('laravel-crm.settings.update')
-        ->middleware(['can:update,VentureDrake\LaravelCrm\Models\Setting']);
-});
+require_once('Routes/settings.php');
 
 /* Updates */
 Route::group(['prefix' => 'updates', 'middleware' => 'auth.laravel-crm'], function () {
@@ -1154,36 +1106,7 @@ Route::group(['prefix' => 'updates', 'middleware' => 'auth.laravel-crm'], functi
         ->name('laravel-crm.updates.index');
 });
 
-/* Roles */
-Route::group(['prefix' => 'roles', 'middleware' => 'auth.laravel-crm'], function () {
-    Route::get('', 'VentureDrake\LaravelCrm\Http\Controllers\RoleController@index')
-        ->name('laravel-crm.roles.index')
-        ->middleware(['can:viewAny,VentureDrake\LaravelCrm\Models\Role']);
-
-    Route::get('create', 'VentureDrake\LaravelCrm\Http\Controllers\RoleController@create')
-        ->name('laravel-crm.roles.create')
-        ->middleware(['can:create,VentureDrake\LaravelCrm\Models\Role']);
-
-    Route::post('', 'VentureDrake\LaravelCrm\Http\Controllers\RoleController@store')
-        ->name('laravel-crm.roles.store')
-        ->middleware(['can:create,VentureDrake\LaravelCrm\Models\Role']);
-
-    Route::get('{role}', 'VentureDrake\LaravelCrm\Http\Controllers\RoleController@show')
-        ->name('laravel-crm.roles.show')
-        ->middleware(['can:view,role']);
-
-    Route::get('{role}/edit', 'VentureDrake\LaravelCrm\Http\Controllers\RoleController@edit')
-        ->name('laravel-crm.roles.edit')
-        ->middleware(['can:update,role']);
-
-    Route::put('{role}', 'VentureDrake\LaravelCrm\Http\Controllers\RoleController@update')
-        ->name('laravel-crm.roles.update')
-        ->middleware(['can:update,role']);
-
-    Route::delete('{role}', 'VentureDrake\LaravelCrm\Http\Controllers\RoleController@destroy')
-        ->name('laravel-crm.roles.destroy')
-        ->middleware(['can:delete,role']);
-});
+require_once('Routes/roles.php');
 
 /* Pipelines */
 Route::group(['prefix' => 'pipelines', 'middleware' => 'auth.laravel-crm'], function () {
@@ -1388,3 +1311,10 @@ Route::group(['prefix' => 'crm', 'middleware' => 'auth.laravel-crm'], function (
 Route::put('/current-team', 'VentureDrake\LaravelCrm\Http\Controllers\Jetstream\CurrentTeamController@update')
     ->name('current-team.update')
     ->middleware(['auth', 'verified']);
+
+require_once('Routes/participiant.php');
+require_once('Routes/permissions.php');
+require_once('Routes/recipes.php');
+require_once('Routes/recipe-categories.php');
+require_once('Routes/ogroup.php');
+require_once('Routes/product-return.php');
