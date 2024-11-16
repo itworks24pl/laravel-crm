@@ -14,11 +14,10 @@
             <div class="col col-md-10">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title float-left m-0">{{ ucfirst(__('laravel-crm::lang.roles')) }}</h3>
+                        <h3 class="card-title float-left m-0">{{ ucfirst(__('laravel-crm::lang.permissions')) }}</h3>
                             @can('create crm roles')
                                 <span class="float-right">
-                                    <a type="button" class="btn btn-primary btn-sm" href="{{ url(route('laravel-crm.permissions.index')) }}"><span class="fa fa-plus"></span>  {{ ucfirst(__('laravel-crm::lang.edit_permissions')) }}</a>
-                                    <a type="button" class="btn btn-primary btn-sm" href="{{ url(route('laravel-crm.roles.create')) }}"><span class="fa fa-plus"></span>  {{ ucfirst(__('laravel-crm::lang.add_role')) }}</a>
+                                    <a type="button" class="btn btn-primary btn-sm" href="{{ url(route('laravel-crm.permissions.create')) }}"><span class="fa fa-plus"></span>  {{ ucfirst(__('laravel-crm::lang.add_perrmision')) }}</a>
                                 </span>
                             @endcan
                     </div>
@@ -31,33 +30,31 @@
                                         <th scope="col">{{ ucfirst(__('laravel-crm::lang.name')) }}</th>
                                         <th scope="col">{{ ucfirst(__('laravel-crm::lang.created')) }}</th>
                                         <th scope="col">{{ ucfirst(__('laravel-crm::lang.updated')) }}</th>
-                                        <th scope="col">{{ ucfirst(__('laravel-crm::lang.users')) }}</th>
                                         <th scope="col"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($roles as $role)
-                                        <tr class="has-link" data-url="{{ url(route('laravel-crm.roles.show',$role)) }}">
-                                            <td>{{ $role->name }}
-                                                @if($role->description)
-                                                    <br /><small>{{ $role->description }}</small>
+                                    @foreach($permissions as $permission)
+                                        <tr class="has-link" data-url="{{ url(route('laravel-crm.permissions.show',$permission)) }}">
+                                            <td>{{ $permission->name }}
+                                                @if($permission->description)
+                                                    <br /><small>{{ $permission->description }}</small>
                                                 @endif
                                             </td>
-                                            <td>{{ $role->created_at->format($dateFormat) }}</td>
-                                            <td>{{ $role->updated_at->format($dateFormat) }}</td>
-                                            <td>{{ $role->users->count() }}</td>
+                                            <td>{{ $permission->created_at->format($dateFormat) }}</td>
+                                            <td>{{ $permission->updated_at->format($dateFormat) }}</td>
                                             <td class="disable-link text-right">
                                                 @can('view crm roles')
-                                                    <a href="{{  route('laravel-crm.roles.show',$role) }}" class="btn btn-outline-secondary btn-sm"><span class="fa fa-eye" aria-hidden="true"></span></a>
+                                                    <a href="{{  route('laravel-crm.permissions.show',$permission) }}" class="btn btn-outline-secondary btn-sm"><span class="fa fa-eye" aria-hidden="true"></span></a>
                                                 @endcan
                                                 @can('edit crm roles')
-                                                    <a href="{{  route('laravel-crm.roles.edit',$role) }}" class="btn btn-outline-secondary btn-sm {{ (in_array($role->name, ['Owner','Admin'])) ? 'disabled' : null }}" ><span class="fa fa-edit" aria-hidden="true"></span></a>
+                                                    <a href="{{  route('laravel-crm.permissions.edit',$permission) }}" class="btn btn-outline-secondary btn-sm {{ (in_array($permission->name, ['Owner','Admin'])) ? 'disabled' : null }}" ><span class="fa fa-edit" aria-hidden="true"></span></a>
                                                 @endcan
                                                 @can('delete crm roles')
-                                                    <form action="{{ route('laravel-crm.roles.destroy',$role) }}" method="POST" class="form-check-inline mr-0 form-delete-button">
+                                                    <form action="{{ route('laravel-crm.permissions.destroy',$permission) }}" method="POST" class="form-check-inline mr-0 form-delete-button">
                                                         {{ method_field('DELETE') }}
                                                         {{ csrf_field() }}
-                                                        <button class="btn btn-danger btn-sm" type="submit" data-model="{{ __('laravel-crm::lang.role') }}" {{ (in_array($role->name, ['Owner','Admin']) || $role->users->count() >= 1) ? 'disabled' : null }}><span class="fa fa-trash-o" aria-hidden="true"></span></button>
+                                                        <button class="btn btn-danger btn-sm" type="submit" data-model="{{ __('laravel-crm::lang.permission') }}" {{ (in_array($permission->name, ['Owner','Admin']) || $permission->users->count() >= 1) ? 'disabled' : null }}><span class="fa fa-trash-o" aria-hidden="true"></span></button>
                                                     </form>
                                                 @endcan
                                             </td>
