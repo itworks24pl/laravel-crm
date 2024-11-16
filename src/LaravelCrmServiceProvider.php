@@ -594,6 +594,14 @@ class LaravelCrmServiceProvider extends ServiceProvider
             }
         });
 
+        Blade::if('hasparticipiantsenabled', function () {
+            if(is_array(config('laravel-crm.modules')) && in_array('participiants', config('laravel-crm.modules'))) {
+                return true;
+            } elseif(! config('laravel-crm.modules')) {
+                return true;
+            }
+        });
+
         Blade::if('hasdealsenabled', function () {
             if(is_array(config('laravel-crm.modules')) && in_array('deals', config('laravel-crm.modules'))) {
                 return true;
