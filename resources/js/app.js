@@ -8,6 +8,8 @@ require('select2/dist/js/select2.min')
 require('bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min')
 require('trix/dist/trix.esm')
 
+window.$ = window.jQuery = require("jquery");
+
 import bsCustomFileInput from 'bs-custom-file-input'
 
 const Swal = require('sweetalert2')

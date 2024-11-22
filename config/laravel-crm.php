@@ -101,7 +101,7 @@ return [
     |
     */
 
-    'route_prefix' => env('LARAVEL_CRM_ROUTE_PREFIX', 'crm'),
+    'route_prefix' => env('LARAVEL_CRM_ROUTE_PREFIX', ''),
 
     /*
     |--------------------------------------------------------------------------
