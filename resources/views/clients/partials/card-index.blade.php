@@ -41,7 +41,7 @@
                     <td class="disable-link text-right">
                         @hasleadsenabled
                         @can('create crm leads')
-                            <a href="{{ route('laravel-crm.leads.create', ['model' => 'client', 'id' => $client->id]) }}" class="btn btn-outline-secondary btn-sm"><span class="fa fa-arrow-right" aria-hidden="true"></span> <span class="fa fa-crosshairs" aria-hidden="true"></span></a>
+                            <a href="{{ route('laravel-crm.leads.create', ['model' => 'client', 'id' => $client->id]) }}" class="btn btn-outline-secondary btn-sm" title="{{ ucfirst(__('laravel-crm::lang.lead')) }}"><span class="fa fa-arrow-right" aria-hidden="true"></span> <span class="fa fa-crosshairs" aria-hidden="true"></span></a>
                         @endcan
                         @endhasleadsenabled
                         @hasdealsenabled
@@ -65,7 +65,7 @@
                         @can('edit crm clients')
                             <a href="{{  route('laravel-crm.clients.edit',$client) }}" class="btn btn-outline-secondary btn-sm"><span class="fa fa-edit" aria-hidden="true"></span></a>
                         @endcan
-                        @can('delete crm clients')    
+                        @can('delete crm clients')
                         <form action="{{ route('laravel-crm.clients.destroy',$client) }}" method="POST" class="form-check-inline mr-0 form-delete-button">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
@@ -77,7 +77,7 @@
             @endforeach
             </tbody>
         </table>
-        
+
     @endcomponent
 
     @if($clients instanceof \Illuminate\Pagination\LengthAwarePaginator )
@@ -86,4 +86,4 @@
         @endcomponent
     @endif
 
-@endcomponent    
+@endcomponent

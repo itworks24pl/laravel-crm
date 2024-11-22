@@ -16,7 +16,7 @@
     <script src="https://kit.fontawesome.com/489f6ee958.js" crossorigin="anonymous"></script>
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    
+
     <!-- Styles -->
     <link href="{{ asset('vendor/laravel-crm/css/app.css') }}?v=53156542375858" rel="stylesheet">
 
@@ -52,7 +52,7 @@
                                     </li>
                                 @endif
                             @else
-                                @include('laravel-crm::layouts.partials.nav-user')  
+                                @include('laravel-crm::layouts.partials.nav-user')
                             @endguest
                         </ul>
                     </div>

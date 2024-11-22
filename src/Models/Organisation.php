@@ -25,11 +25,12 @@ class Organisation extends Model
     protected $guarded = ['id'];
 
     protected $encryptable = [
-        'name',
+        'name'
     ];
 
     protected $searchable = [
         'name',
+        'shortname'
     ];
 
     protected $filterable = [
@@ -40,6 +41,7 @@ class Organisation extends Model
     public $sortable = [
         'id',
         'name',
+        'shortname',
         'created_at',
         'updated_at',
     ];

@@ -1,6 +1,12 @@
 <div class="row">
     <div class="col-sm-6 border-right">
         @include('laravel-crm::partials.form.text',[
+            'name' => 'shortname',
+            'label' => ucfirst(__('laravel-crm::lang.shortname')),
+            'value' => old('shortname', $organisation->shortname ?? null),
+            'required' => 'true'
+          ])
+        @include('laravel-crm::partials.form.text',[
           'name' => 'name',
           'label' => ucfirst(__('laravel-crm::lang.name')),
           'value' => old('name', $organisation->name ?? null),
@@ -19,7 +25,7 @@
                 @include('laravel-crm::partials.form.text',[
                   'name' => 'vat_number',
                   'label' => ucfirst(__('laravel-crm::lang.vat_number')),
-                  'value' => old('vat_number', $organisation->vat_number ?? null),       
+                  'value' => old('vat_number', $organisation->vat_number ?? null),
                 ])
             </div>
         </div>
@@ -48,7 +54,7 @@
                 @include('laravel-crm::partials.form.text',[
                    'name' => 'number_of_employees',
                    'label' => ucfirst(__('laravel-crm::lang.number_of_employees')),
-                   'value' => old('number_of_employees', $organisation->number_of_employees ?? null),     
+                   'value' => old('number_of_employees', $organisation->number_of_employees ?? null),
                  ])
             </div>
             <div class="col">
@@ -56,7 +62,7 @@
                     'name' => 'annual_revenue',
                     'label' => ucfirst(__('laravel-crm::lang.annual_revenue')),
                     'prepend' => '<span class="fa fa-dollar" aria-hidden="true"></span>',
-                    'value' => old('annual_revenue', ((isset($organisation->annual_revenue)) ? ($organisation->annual_revenue / 100) : null) ?? null)      
+                    'value' => old('annual_revenue', ((isset($organisation->annual_revenue)) ? ($organisation->annual_revenue / 100) : null) ?? null)
                   ])
             </div>
         </div>
@@ -65,19 +71,19 @@
              'name' => 'linkedin',
              'label' => ucfirst(__('laravel-crm::lang.linkedin_company_page')),
              'prepend' => 'https://www.linkedin.com/company/',
-             'value' => old('linkedin', $organisation->linkedin ?? null),     
+             'value' => old('linkedin', $organisation->linkedin ?? null),
            ])
-        
+
         @include('laravel-crm::partials.form.textarea',[
            'name' => 'description',
            'label' => ucfirst(__('laravel-crm::lang.description')),
            'rows' => 5,
-           'value' => old('description', $organisation->description ?? null) 
+           'value' => old('description', $organisation->description ?? null)
         ])
         @include('laravel-crm::partials.form.multiselect',[
             'name' => 'labels',
             'label' => ucfirst(__('laravel-crm::lang.labels')),
-            'options' => \VentureDrake\LaravelCrm\Http\Helpers\SelectOptions\optionsFromModel(\VentureDrake\LaravelCrm\Models\Label::all(), false),      
+            'options' => \VentureDrake\LaravelCrm\Http\Helpers\SelectOptions\optionsFromModel(\VentureDrake\LaravelCrm\Models\Label::all(), false),
             'value' =>  old('labels', (isset($organisation)) ? $organisation->labels->pluck('id')->toArray() : null)
         ])
         @include('laravel-crm::partials.form.select',[

@@ -193,6 +193,7 @@ class OrganisationController extends Controller
         $address = $organisation->getPrimaryAddress();
 
         return response()->json([
+            'address' => $address->address ?? null,
             'address_line1' => $address->line1 ?? null,
             'address_line2' => $address->line2 ?? null,
             'address_line3' => $address->line3 ?? null,

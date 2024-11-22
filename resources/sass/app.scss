@@ -1,35 +1,36 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
-@import 'variables';
+@use 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+//@import '~bootstrap/scss/bootstrap';
+@use './../../node_modules/bootstrap/scss/bootstrap.scss';
 
 // bootstrap4-toggle
-@import '~bootstrap4-toggle/css/bootstrap4-toggle.min.css';
+@use './../../node_modules/bootstrap4-toggle/css/bootstrap4-toggle.min.css';
 
 // jquery-datetimepicker
-@import '~jquery-datetimepicker/build/jquery.datetimepicker.min.css';
+@use './../../node_modules/jquery-datetimepicker/build/jquery.datetimepicker.min.css';
 
 // bootstrap-duallistbox
-@import '../../bower_components/bootstrap-duallistbox/dist/bootstrap-duallistbox.min.css';
+@use '../../bower_components/bootstrap-duallistbox/dist/bootstrap-duallistbox.min.css';
 
 // Select2
-@import '~select2/dist/css/select2.min.css'; 
+@import './../../node_modules/select2/dist/css/select2.min.css';
 
 // Bootstrap color picker
-@import '~bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css';
+@import './../../node_modules/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css';
 
 // Bootstrap bootstrap-multiselect
-@import '~bootstrap-multiselect/dist/css/bootstrap-multiselect.min.css';
+@import './../../node_modules/bootstrap-multiselect/dist/css/bootstrap-multiselect.min.css';
 
 // Trix
-@import "~trix/dist/trix.css";
+@import "./../../node_modules/trix/dist/trix.css";
 
 // Custom
 @import "custom";
 
 // Portal
 @import "portal";
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');

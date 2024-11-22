@@ -28,7 +28,8 @@ class OrganisationService
     public function create($request)
     {
         $organisation = Organisation::create([
-            'external_id' => Uuid::uuid4()->toString(),
+            'external_id' => $request->external_id ? $request->external_id : Uuid::uuid4()->toString(),
+            'shortname' => $request->shortname,
             'name' => $request->name,
             'organisation_type_id' => $request->organisation_type_id,
             'vat_number' => $request->vat_number,
@@ -53,6 +54,7 @@ class OrganisationService
     {
         $organisation = Organisation::create([
             'external_id' => Uuid::uuid4()->toString(),
+            'shortname' => $request->organisation_shortname,
             'name' => $request->organisation_name,
             'organisation_type_id' => $request->organisation_type_id,
             'vat_number' => $request->vat_number,
@@ -83,6 +85,7 @@ class OrganisationService
     public function update(Organisation $organisation, $request)
     {
         $organisation->update([
+            'shortname' => $request->shortname,
             'name' => $request->name,
             'organisation_type_id' => $request->organisation_type_id,
             'vat_number' => $request->vat_number,
@@ -178,6 +181,7 @@ class OrganisationService
                     $address->update([
                         'address_type_id' => $addressRequest['type'] ?? null,
                         'address' => $addressRequest['address'] ?? null,
+                        'shortname' => $addressRequest['shortname'] ?? null,
                         'name' => $addressRequest['name'] ?? null,
                         'contact' => $addressRequest['contact'] ?? null,
                         'phone' => $addressRequest['phone'] ?? null,
@@ -197,6 +201,7 @@ class OrganisationService
                         'external_id' => Uuid::uuid4()->toString(),
                         'address_type_id' => $addressRequest['type'] ?? null,
                         'address' => $addressRequest['address'] ?? null,
+                        'shortname' => $addressRequest['shortname'] ?? null,
                         'name' => $addressRequest['name'] ?? null,
                         'contact' => $addressRequest['contact'] ?? null,
                         'phone' => $addressRequest['phone'] ?? null,

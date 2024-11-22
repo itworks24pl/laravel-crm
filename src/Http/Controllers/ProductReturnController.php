@@ -3,6 +3,7 @@
 namespace VentureDrake\LaravelCrm\Http\Controllers;
 
 use VentureDrake\LaravelCrm\Models\ProductReturn;
+use VentureDrake\LaravelCrm\Models\Product;
 
 class ProductReturnController extends Controller
 {
