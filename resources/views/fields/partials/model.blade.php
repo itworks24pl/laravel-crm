@@ -39,7 +39,7 @@
                    'value' => old('fields['.$fieldValueOrModel->field->id.']', $fieldValueOrModel->value ?? null)
                ])
                 @break
-            {{-- @case('checkbox_multiple')
+            @case('checkbox_multiple')
                 <x-form-group label="{{ ucfirst(__($fieldValueOrModel->field->name)) }}">
                     @foreach($fieldValueOrModel->field->fieldOptions as $fieldOption)
                         <x-form-checkbox name="fields[{{ $fieldValueOrModel->field->id }}]" value="{{ $fieldOption->id }}" label="{{ $fieldOption->label }}" />
@@ -52,7 +52,7 @@
                         <x-form-radio name="fields[{{ $fieldValueOrModel->field->id }}]" value="{{ $fieldOption->id }}" label="{{ $fieldOption->label }}" />
                     @endforeach
                 </x-form-group>
-             @break --}}
+             @break
         @endswitch
     @endif
 @endforeach
