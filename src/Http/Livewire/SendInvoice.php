@@ -107,7 +107,7 @@ class SendInvoice extends Component
 
         $this->resetFields();
 
-        $this->dispatchBrowserEvent('invoiceSent');
+        $this->dispatch('invoiceSent');
     }
 
     public function generateUrl()

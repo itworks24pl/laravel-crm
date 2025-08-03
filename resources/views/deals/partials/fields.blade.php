@@ -12,12 +12,12 @@
             'organisation' => $organisation ?? null,
             'person' => $person ?? null
         ])
-        
+
         @include('laravel-crm::partials.form.textarea',[
              'name' => 'description',
              'label' => ucfirst(__('laravel-crm::lang.description')),
              'rows' => 5,
-             'value' => old('description', $deal->description ?? null) 
+             'value' => old('description', $deal->description ?? null)
         ])
         <div class="row">
             <div class="col-sm-6">
@@ -25,7 +25,7 @@
                       'name' => 'amount',
                       'label' => ucfirst(__('laravel-crm::lang.value')),
                       'prepend' => '<span class="fa fa-dollar" aria-hidden="true"></span>',
-                      'value' => old('amount', ((isset($deal->amount)) ? ($deal->amount / 100) : null) ?? null) 
+                      'value' => old('amount', ((isset($deal->amount)) ? ($deal->amount / 100) : null) ?? null)
                   ])
             </div>
             <div class="col-sm-6">
@@ -64,7 +64,7 @@
         @include('laravel-crm::partials.form.multiselect',[
             'name' => 'labels',
             'label' => ucfirst(__('laravel-crm::lang.labels')),
-            'options' => \VentureDrake\LaravelCrm\Http\Helpers\SelectOptions\optionsFromModel(\VentureDrake\LaravelCrm\Models\Label::all(), false),      
+            'options' => \VentureDrake\LaravelCrm\Http\Helpers\SelectOptions\optionsFromModel(\VentureDrake\LaravelCrm\Models\Label::all(), false),
             'value' =>  old('labels', (isset($deal)) ? $deal->labels->pluck('id')->toArray() : null)
         ])
 
@@ -218,7 +218,7 @@
                         'index' => $loop->index
                     ])
                 @endforeach
-            @endif    
+            @endif
         </span>
     </div>
 </div>

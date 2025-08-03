@@ -47,7 +47,7 @@ class LivePhoneEdit extends Component
         $i = $i + 1;
         $this->i = $i;
         array_push($this->inputs, $i);
-        $this->dispatchBrowserEvent('addPhoneInputs');
+        $this->dispatch('addPhoneInputs');
     }
 
     public function remove($i)

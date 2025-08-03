@@ -135,7 +135,7 @@ class LiveOrderItems extends Component
         $this->tax_rate[$i] = null;
         array_push($this->inputs, $i);
 
-        $this->dispatchBrowserEvent('addedItem', ['id' => $this->i]);
+        $this->dispatch('addedItem', ['id' => $this->i]);
     }
 
     public function loadItemDefault($id)
@@ -215,7 +215,7 @@ class LiveOrderItems extends Component
     {
         unset($this->inputs[$id - 1], $this->product_id[$id], $this->name[$id]);
 
-        $this->dispatchBrowserEvent('removedItem', ['id' => $id]);
+        $this->dispatch('removedItem', ['id' => $id]);
 
         $this->calculateAmounts();
     }

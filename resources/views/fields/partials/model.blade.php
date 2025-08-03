@@ -5,14 +5,15 @@
         $fields = \VentureDrake\LaravelCrm\Models\FieldModel::where('model', get_class($model))->get();
     }
 @endphp
-@foreach($fields as $fieldValueOrModel)  
+@foreach($fields as $fieldValueOrModel)
     @if($fieldValueOrModel->field)
+    @dd($fieldValueOrModel->field->type)
         @switch($fieldValueOrModel->field->type)
             @case('text')
                 @include('laravel-crm::partials.form.text',[
                    'name' => 'fields['.$fieldValueOrModel->field->id.']',
                    'label' => ucfirst(__($fieldValueOrModel->field->name)),
-                  'value' => old('fields['.$fieldValueOrModel->field->id.']', $fieldValueOrModel->value ?? null) 
+                  'value' => old('fields['.$fieldValueOrModel->field->id.']', $fieldValueOrModel->value ?? null)
                ])
                 @break
             @case('textarea')
@@ -20,7 +21,7 @@
                    'name' => 'fields['.$fieldValueOrModel->field->id.']',
                    'label' => ucfirst(__($fieldValueOrModel->field->name)),
                    'rows' => 5,
-                   'value' => old('fields['.$fieldValueOrModel->field->id.']', $fieldValueOrModel->value ?? null) 
+                   'value' => old('fields['.$fieldValueOrModel->field->id.']', $fieldValueOrModel->value ?? null)
                 ])
                 @break
             @case('select')
@@ -28,17 +29,17 @@
                    'name' => 'fields['.$fieldValueOrModel->field->id.']',
                    'label' => ucfirst(__($fieldValueOrModel->field->name)),
                    'options' => ['' => ''] + $fieldValueOrModel->field->fieldOptions->pluck('label','id')->toArray(),
-                   'value' => old('fields['.$fieldValueOrModel->field->id.']', $fieldValueOrModel->value ?? null) 
+                   'value' => old('fields['.$fieldValueOrModel->field->id.']', $fieldValueOrModel->value ?? null)
                ])
                 @break
             @case('checkbox')
                 @include('laravel-crm::partials.form.checkbox',[
                    'name' => 'fields['.$fieldValueOrModel->field->id.']',
                    'label' => ucfirst(__($fieldValueOrModel->field->name)),
-                   'value' => old('fields['.$fieldValueOrModel->field->id.']', $fieldValueOrModel->value ?? null) 
+                   'value' => old('fields['.$fieldValueOrModel->field->id.']', $fieldValueOrModel->value ?? null)
                ])
                 @break
-            @case('checkbox_multiple')
+            {{-- @case('checkbox_multiple')
                 <x-form-group label="{{ ucfirst(__($fieldValueOrModel->field->name)) }}">
                     @foreach($fieldValueOrModel->field->fieldOptions as $fieldOption)
                         <x-form-checkbox name="fields[{{ $fieldValueOrModel->field->id }}]" value="{{ $fieldOption->id }}" label="{{ $fieldOption->label }}" />
@@ -51,7 +52,7 @@
                         <x-form-radio name="fields[{{ $fieldValueOrModel->field->id }}]" value="{{ $fieldOption->id }}" label="{{ $fieldOption->label }}" />
                     @endforeach
                 </x-form-group>
-             @break
+             @break --}}
         @endswitch
     @endif
-@endforeach  
+@endforeach

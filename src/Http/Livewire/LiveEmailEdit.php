@@ -47,7 +47,7 @@ class LiveEmailEdit extends Component
         $i = $i + 1;
         $this->i = $i;
         array_push($this->inputs, $i);
-        $this->dispatchBrowserEvent('addEmailInputs');
+        $this->dispatch('addEmailInputs');
     }
 
     public function remove($i)

@@ -48,7 +48,7 @@ class LiveRelatedPerson extends Component
 
         $this->getPeople();
 
-        $this->dispatchBrowserEvent('linkedPerson');
+        $this->dispatch('linkedPerson');
     }
 
     public function remove($id)
@@ -61,12 +61,12 @@ class LiveRelatedPerson extends Component
 
         $this->getPeople();
 
-        $this->dispatchBrowserEvent('linkedPerson');
+        $this->dispatch('linkedPerson');
     }
 
     public function updatedPersonName($value)
     {
-        $this->dispatchBrowserEvent('updatedNameFieldAutocomplete');
+        $this->dispatch('updatedNameFieldAutocomplete');
     }
 
     private function getPeople()

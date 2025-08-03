@@ -53,7 +53,7 @@ class LiveRelatedContactOrganisation extends Component
 
         $this->getContacts();
 
-        $this->dispatchBrowserEvent('linkedOrganisation');
+        $this->dispatch('linkedOrganisation');
     }
 
     public function remove($id)
@@ -76,12 +76,12 @@ class LiveRelatedContactOrganisation extends Component
 
         $this->getContacts();
 
-        $this->dispatchBrowserEvent('linkedOrganisation');
+        $this->dispatch('linkedOrganisation');
     }
 
     public function updatedOrganisationName($value)
     {
-        $this->dispatchBrowserEvent('updatedNameFieldAutocomplete');
+        $this->dispatch('updatedNameFieldAutocomplete');
     }
 
     private function getContacts()

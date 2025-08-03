@@ -106,7 +106,7 @@ class SendPurchaseOrder extends Component
 
         $this->resetFields();
 
-        $this->dispatchBrowserEvent('purchaseOrderSent');
+        $this->dispatch('purchaseOrderSent');
     }
 
     public function generateUrl()
